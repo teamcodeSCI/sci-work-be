@@ -1,0 +1,296 @@
+{
+	"info": {
+		"_postman_id": "a5d5b5ca-b801-4674-bfb9-be2130fc0388",
+		"name": "SCI Work",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18193777"
+	},
+	"item": [
+		{
+			"name": "Position",
+			"item": [
+				{
+					"name": "get position",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/position",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"position"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create position",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"code\":\"VIDEO\",\r\n    \"name\":\"Video\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/position/create",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"position",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete position",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"code\":\"VIDEO\",\r\n    \"name\":\"Video\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/position/3",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"position",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"first_name\":\"Đoàn Minh\",\r\n    \"last_name\":\"Đức\",\r\n    \"position_id\":1,\r\n    \"email\":\"ducdoan1806@gmail.com\",\r\n    \"password\":\"123456aA\",\r\n    \"c_password\":\"123456aA\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/auth/register",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \r\n    \"email\":\"ducdm@scigroup.com.vn\",\r\n    \"password\":\"123456aA\"\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/auth/login",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get user",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMzM4NGJkOTdmNjQ5ZDU4YjYxMTcwNzMxNTczNmM4MmJmZTY4ZjE4MGU1ZDUxN2MyMWIzMDYxMTBiZTQ4NDViYTMwZDkxNGY2NzVjYmY1ZjQiLCJpYXQiOjE2OTMyNzgwNDcuMTExMzAxLCJuYmYiOjE2OTMyNzgwNDcuMTExMzAzLCJleHAiOjE3MjQ5MDA0NDcuMTA3ODc5LCJzdWIiOiI5Iiwic2NvcGVzIjpbXX0.RH6LimrlIRwxppr6fn1v5IfeD7KPmZuMYvnxlhyRMQ4S8-0kV5RqGQPcmBjLte4BGSHvZk2jPXrLiaP2CBIhfNEi7nnODzzVxJeRBmsOGPRvBckY33QLOFpyLa64mxMAT-dMMfw79v85Cmgi2_sECPMiV-BbyIt21Qdpg3jkdjNr-QwXJAeTopHatQTE1-3Lrod1J8OYJch4Yxukm1RpwvLQDIzkhQ3pz8EHrPYh26OsIxKfjxfxOqI3ACl_Is33QqQdbu0_O0HtRTcQnVI4oXp89VEBZnGqjuqJ_bJCCGcBGIKct-xJlpaW11xciutPbhhNESEyghvftCXUIa3UNPEES2Uea1yH2V-1Tqf_6JA-UU0P8V7NW8-cediMl0GXicAqjinhCsrK-AKl4Bt-jOEJA2han8Yn1FBNtESjEsxU597FBVIJfx0apqorQZLTyi9lJq39Uixa0pmvcjQXK0DbA7PGf6JvzNS-V7xhuNC8lSlk3IRp_-IlpwQFglFJxibn96jy6ynhV93c-UJ3plzlu2HxFvz-prtw9eTooGjo5ZTHqZHbJEwezSFgP7n6Izp5rh7tm2ZWs4N8tJvSYc4Vp0v-XS9sFyWdR8QSSZBN9u1Ig9yerRu6Y4iJbmcQp3zjgikF8zkaW3KRcbfCApUoraHbcFuWVuvJsv9jhfQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/auth/get-user",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"auth",
+								"get-user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "reset-password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\"id\": 1,\r\n    \"password\": \"123456aA\",\r\n        \"c_password\": \"123456aA\"\r\n       }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/auth/reset-password",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"auth",
+								"reset-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Send email",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"email\":\"ducdoan1806@gmail.com\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/auth/forgot-password",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"auth",
+								"forgot-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Forgot-password",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/auth/forgot-password/TwhZNxbq2KfIit0zqCpFYfrAD19boQse2P896v1LFCewViweqncRgmTuSdLm",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"auth",
+								"forgot-password",
+								"TwhZNxbq2KfIit0zqCpFYfrAD19boQse2P896v1LFCewViweqncRgmTuSdLm"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
