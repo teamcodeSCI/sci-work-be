@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Position;
 use App\Models\Topic;
 use App\Models\User;
 use App\Models\UserList;
