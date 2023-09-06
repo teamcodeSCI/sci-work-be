@@ -15,12 +15,10 @@ return new class extends Migration
     {
         Schema::create('topics', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('userList_id');
             $table->unsignedBigInteger('user_id');
             $table->string('name');
             $table->timestamps();
 
-            $table->foreign('userList_id')->references('id')->on('userlists')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users');
         });
     }

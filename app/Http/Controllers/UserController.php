@@ -102,12 +102,6 @@ class UserController extends Controller
     public function getUser()
     {
         try {
-            if (auth('api')->user() === null) {
-                return response()->json([
-                    'status' => false,
-                    'message' => 'Invalid token',
-                ], 401);
-            }
             $userId = auth('api')->user()->id;
             $user = User::find($userId);
             if ($user === null || !$user) {

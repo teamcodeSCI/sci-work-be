@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PositionController;
+use App\Http\Controllers\TopicController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -35,4 +36,7 @@ Route::prefix('auth')->group(function () {
 Route::middleware(['auth:api'])->group(function () {
     Route::post('/auth/reset-password', [UserController::class, 'resetPassword']);
     Route::get('/auth/get-user', [UserController::class, 'getUser']);
+    Route::prefix('topic')->group(function () {
+        Route::post('/create', [TopicController::class, 'store']);
+    });
 });
