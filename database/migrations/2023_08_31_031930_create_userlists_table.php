@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::create('userlists', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('user_id');
             $table->string('content');
             $table->timestamps();
