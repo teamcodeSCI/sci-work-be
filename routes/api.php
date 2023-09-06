@@ -16,9 +16,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+
+Route::get('/unauthorized', function () {
+    return response()->json([
+        'status' => false,
+        'message' => 'Unauthorized'
+    ], 401);
+})->name('unauthorized');
 Route::prefix('position')->group(function () {
     Route::get('/', [PositionController::class, 'index']);
     Route::post('/create', [PositionController::class, 'store']);
@@ -27,6 +31,8 @@ Route::prefix('position')->group(function () {
 Route::prefix('auth')->group(function () {
     Route::post('/login', [UserController::class, 'login']);
     Route::post('/register', [UserController::class, 'register']);
-    Route::post('/reset-password', [UserController::class, 'resetPassword']);
-    Route::get('/get-user', [UserController::class, 'getUser']);
+});
+Route::middleware(['auth:api'])->group(function () {
+    Route::post('/auth/reset-password', [UserController::class, 'resetPassword']);
+    Route::get('/auth/get-user', [UserController::class, 'getUser']);
 });
