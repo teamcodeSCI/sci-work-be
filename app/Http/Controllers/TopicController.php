@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Position;
 use App\Models\Topic;
 use App\Models\User;
 use App\Models\UserList;
@@ -15,9 +16,32 @@ class TopicController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        try {
+            $input = $request->all();
+            $userId = auth('api')->user()->id;
+            $user = User::find($userId);
+            if ($user === null || !$user) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'User not found',
+                ], 400);
+            }
+            $input['user_id'] = $user->id;
+            $topic = Topic::where('user_id', '=', $input['user_id'])->get();
+
+            return response()->json([
+                'status' => true,
+                'message' => 'Success',
+                'data' => $topic
+            ], 201);
+        } catch (Exception $e) {
+            return response()->json([
+                'status' => false,
+                'message' => $e
+            ], 500);
+        }
     }
 
     /**
@@ -39,10 +63,27 @@ class TopicController extends Controller
     public function store(Request $request)
     {
         try {
+            $input = $request->all();
+            $userId = auth('api')->user()->id;
+            $user = User::find($userId);
+            if ($user === null || !$user) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'User not found',
+                ], 400);
+            }
+            $input['user_id'] = $user->id;
+            $topic = Topic::create($input);
+            $topic['userList'] = UserList::create(['user_id' => $input['user_id'], 'topic_id' => $topic->id]);
+            return response()->json([
+                'status' => true,
+                'message' => 'Success',
+                'data' => $topic
+            ], 201);
         } catch (Exception $e) {
             return response()->json([
                 'status' => false,
-                'message' => 'Server Error'
+                'message' => $e
             ], 500);
         }
     }
@@ -55,7 +96,37 @@ class TopicController extends Controller
      */
     public function show($id)
     {
-        //
+
+        try {
+            $topic = Topic::select('id', 'user_id', 'name')->find($id);
+            if (!$topic) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Topic not found'
+                ], 400);
+            }
+            $topic['userList'] = UserList::select('user_id')->where('topic_id', '=', $topic['id'])->get();
+            $userArrs = [];
+            foreach ($topic['userList'] as $key) {
+                $user = User::select('id', 'first_name', 'last_name', 'background', 'email', 'position_id')->find($key['user_id']);
+                $position = $user->position;
+                $user['position_code'] = $position->code;
+                $user['position_name'] = $position->name;
+                unset($user['position']);
+                array_push($userArrs, $user);
+            }
+            $topic['userList'] = $userArrs;
+            return response()->json([
+                'status' => true,
+                'message' => 'Success',
+                'data' => $topic
+            ], 201);
+        } catch (Exception $e) {
+            return response()->json([
+                'status' => false,
+                'message' => $e
+            ], 500);
+        }
     }
 
     /**
@@ -67,6 +138,7 @@ class TopicController extends Controller
     public function edit($id)
     {
         //
+
     }
 
     /**
@@ -78,7 +150,36 @@ class TopicController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            $input = $request->all();
+            $userId = auth('api')->user()->id;
+            $user = User::find($userId);
+            if ($user === null || !$user) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'User not found',
+                ], 400);
+            }
+            $topic = Topic::find($id);
+            if (!$topic) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Topic not found',
+                ], 400);
+            }
+
+            $topic->update(['name' => $input['name']]);
+            return response()->json([
+                'status' => true,
+                'message' => 'Success',
+                'data' => $topic
+            ], 201);
+        } catch (Exception $e) {
+            return response()->json([
+                'status' => false,
+                'message' => $e
+            ], 500);
+        }
     }
 
     /**
@@ -89,6 +190,40 @@ class TopicController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $userId = auth('api')->user()->id;
+            $user = User::find($userId);
+            if ($user === null || !$user) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'User not found',
+                ], 400);
+            }
+            $topic = Topic::find($id);
+            if (!$topic) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Topic not found'
+                ], 400);
+            }
+            if ($user['id'] !== $topic['user_id']) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'You are not owner of topic'
+                ], 400);
+            }
+            UserList::where('topic_id', '=', $topic['id'])->delete();
+            $topic->delete();
+            return response()->json([
+                'status' => true,
+                'message' => 'Success',
+                'data' => $topic
+            ], 201);
+        } catch (Exception $e) {
+            return response()->json([
+                'status' => false,
+                'message' => $e
+            ], 500);
+        }
     }
 }

@@ -37,6 +37,10 @@ Route::middleware(['auth:api'])->group(function () {
     Route::post('/auth/reset-password', [UserController::class, 'resetPassword']);
     Route::get('/auth/get-user', [UserController::class, 'getUser']);
     Route::prefix('topic')->group(function () {
+        Route::get('/', [TopicController::class, 'index']);
         Route::post('/create', [TopicController::class, 'store']);
+        Route::get('/{topic}', [TopicController::class, 'show']);
+        Route::put('/{topic}', [TopicController::class, 'update']);
+        Route::delete('/{topic}', [TopicController::class, 'destroy']);
     });
 });
