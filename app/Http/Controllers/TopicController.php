@@ -15,10 +15,10 @@ class TopicController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
         try {
-            $input = $request->all();
+
             $userId = auth('api')->user()->id;
             $user = User::find($userId);
             if ($user === null || !$user) {
@@ -27,13 +27,19 @@ class TopicController extends Controller
                     'message' => 'User not found',
                 ], 400);
             }
-            $input['user_id'] = $user->id;
-            $topic = Topic::where('user_id', '=', $input['user_id'])->get();
+
+            $topics = UserList::select('topic_id', 'user_id')->where('user_id', '=', $user->id)->get();
+            $topicArr = [];
+            foreach ($topics as $key) {
+                $key['topic'] = Topic::find($key['topic_id']);
+                $key['topic']->owner = User::select('first_name', 'last_name', 'email')->find($key['topic']->user_id);
+                array_push($topicArr, $key['topic']);
+            }
 
             return response()->json([
                 'status' => true,
                 'message' => 'Success',
-                'data' => $topic
+                'data' =>  $topicArr
             ], 201);
         } catch (Exception $e) {
             return response()->json([
@@ -73,7 +79,8 @@ class TopicController extends Controller
             }
             $input['user_id'] = $user->id;
             $topic = Topic::create($input);
-            $topic['userList'] = UserList::create(['user_id' => $input['user_id'], 'topic_id' => $topic->id]);
+            UserList::create(['user_id' => $input['user_id'], 'topic_id' => $topic->id]);
+            $topic['owner'] = ["first_name" => $user->first_name, "last_name" => $user->last_name, "email" => $user->email];
             return response()->json([
                 'status' => true,
                 'message' => 'Success',
