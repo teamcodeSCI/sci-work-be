@@ -20,7 +20,7 @@ class UserlistController extends Controller
         //
         try {
             $query = $request->query();
-            if (!array_key_exists('topic_id', $query)) {
+            if (!array_key_exists('topic_id', $query) || $query['topic_id'] === null) {
                 $user = User::select('id', 'first_name', 'last_name', 'background', 'email', 'position_id')->get();
                 foreach ($user as $key) {
                     $position = $key->position;
