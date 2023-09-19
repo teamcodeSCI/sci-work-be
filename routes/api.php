@@ -3,6 +3,7 @@
 use App\Http\Controllers\PositionController;
 use App\Http\Controllers\TopicController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserlistController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -43,5 +44,9 @@ Route::middleware(['auth:api'])->group(function () {
         Route::get('/{topic}', [TopicController::class, 'show']);
         Route::put('/{topic}', [TopicController::class, 'update']);
         Route::delete('/{topic}', [TopicController::class, 'destroy']);
+    });
+    Route::prefix('user-list')->group(function () {
+        Route::get('/', [UserlistController::class, 'index']);
+        Route::post('/create', [UserlistController::class, 'store']);
     });
 });

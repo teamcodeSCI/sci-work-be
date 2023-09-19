@@ -119,6 +119,7 @@ class TopicController extends Controller
                 $user['position_code'] = $position->code;
                 $user['position_name'] = $position->name;
                 unset($user['position']);
+                unset($user['position_id']);
                 array_push($userArrs, $user);
             }
             $topic['userList'] = $userArrs;
