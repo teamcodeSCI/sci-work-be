@@ -126,4 +126,32 @@ class UserController extends Controller
             ], 500);
         }
     }
+    public function updateUser(Request $request)
+    {
+        try {
+            $input = $request->all();
+            $userId = auth('api')->user()->id;
+            $user = User::find($userId);
+            if ($user === null || !$user) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'User not found',
+                ], 400);
+            }
+
+            $user->update($input);
+            $user['position'] = Position::find($user['position_id']);
+            $user['position'] = ['name' => $user['position']->name, 'code' => $user['position']->code];
+            return response()->json([
+                'status' => true,
+                'message' => 'Success',
+                'data' => $user
+            ], 200);
+        } catch (Exception $e) {
+            return response()->json([
+                'status' => false,
+                'message' => $e
+            ], 500);
+        }
+    }
 }

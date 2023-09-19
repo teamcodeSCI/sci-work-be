@@ -36,6 +36,7 @@ Route::prefix('auth')->group(function () {
 Route::middleware(['auth:api'])->group(function () {
     Route::post('/auth/reset-password', [UserController::class, 'resetPassword']);
     Route::get('/auth/get-user', [UserController::class, 'getUser']);
+    Route::put('/auth/update-user', [UserController::class, 'updateUser']);
     Route::prefix('topic')->group(function () {
         Route::get('/', [TopicController::class, 'index']);
         Route::post('/create', [TopicController::class, 'store']);

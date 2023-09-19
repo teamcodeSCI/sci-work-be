@@ -175,6 +175,7 @@ class TopicController extends Controller
             }
 
             $topic->update(['name' => $input['name']]);
+            $topic['owner'] = ["first_name" => $user->first_name, "last_name" => $user->last_name, "email" => $user->email];
             return response()->json([
                 'status' => true,
                 'message' => 'Success',
