@@ -21,10 +21,19 @@ class UserlistController extends Controller
         try {
             $query = $request->query();
             if (!array_key_exists('topic_id', $query)) {
+                $user = User::select('id', 'first_name', 'last_name', 'background', 'email', 'position_id')->get();
+                foreach ($user as $key) {
+                    $position = $key->position;
+                    $key['position_code'] = $position->code;
+                    $key['position_name'] = $position->name;
+                    unset($key['position']);
+                    unset($key['position_id']);
+                }
                 return response()->json([
-                    'status' => false,
-                    'message' => 'topic_id not found',
-                ], 400);
+                    'status' => true,
+                    'message' => 'Success',
+                    'data' => $user
+                ], 200);
             }
             $topic = Topic::find($query['topic_id']);
             if (!$topic) {
@@ -49,7 +58,7 @@ class UserlistController extends Controller
             return response()->json([
                 'status' => true,
                 'message' => 'Success',
-                'data' => ['topic_id' => $topic->id, "userList" => $userArrs]
+                'data' => $userArrs
             ], 200);
         } catch (Exception $e) {
             return response()->json([
@@ -67,6 +76,7 @@ class UserlistController extends Controller
     public function create()
     {
         //
+
     }
 
     /**
@@ -77,7 +87,47 @@ class UserlistController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $input = $request->all();
+            if (!array_key_exists('topic_id', $input) || !array_key_exists('user_id', $input)) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'topic_id or user_id not found',
+                ], 400);
+            }
+            $topic = Topic::find($input['topic_id']);
+            if (!$topic) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Topic not found',
+                ], 400);
+            }
+            $user = User::select('id', 'first_name', 'last_name', 'background', 'email', 'position_id')->find($input['user_id']);
+            if (!$user) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'User not found',
+                ], 400);
+            }
+            $userList = UserList::where('topic_id', '=', $topic->id)->where('user_id', '=', $user->id)->get();
+            if (count($userList) !== 0) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'User already exist in topic',
+                ], 400);
+            }
+            UserList::create(['user_id' => $input['user_id'], 'topic_id' => $topic->id]);
+            return response()->json([
+                'status' => true,
+                'message' => 'Success',
+                'data' =>  $user
+            ], 200);
+        } catch (Exception $e) {
+            return response()->json([
+                'status' => false,
+                'message' => $e
+            ], 500);
+        }
     }
 
     /**
