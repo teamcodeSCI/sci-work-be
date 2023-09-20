@@ -15,16 +15,15 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/position",
+							"raw": "http://localhost/project/sci-work-be/public/api/position",
 							"protocol": "http",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"localhost"
 							],
-							"port": "8000",
 							"path": [
+								"project",
+								"sci-work-be",
+								"public",
 								"api",
 								"position"
 							]
@@ -39,7 +38,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"code\":\"CODE\",\r\n    \"name\":\"Phát triển web\"\r\n}",
+							"raw": "{\r\n    \"code\":\"DESIGN\",\r\n    \"name\":\"Thiết kế\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -47,16 +46,15 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/position/create",
+							"raw": "http://localhost/project/sci-work-be/public/api/position/create",
 							"protocol": "http",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"localhost"
 							],
-							"port": "8000",
 							"path": [
+								"project",
+								"sci-work-be",
+								"public",
 								"api",
 								"position",
 								"create"
@@ -176,21 +174,20 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNjljZTg4ZjA4MzI2MWQ5NmM0ZWE0OGQ5NzM1ZTRjNGU2NjJkMTMxZDAwODQ4ZDk4YzcyMTMyNzM4ZGVlNGY1MjYyZGVhOThkOWM2OWJhMzEiLCJpYXQiOjE2OTM5NzM2OTQuNDU5MDI3LCJuYmYiOjE2OTM5NzM2OTQuNDU5MDI5LCJleHAiOjE3MjU1OTYwOTQuNDU2MTA2LCJzdWIiOiIyIiwic2NvcGVzIjpbXX0.nZZzGENVyzIgalbkNRgDEiHS-8hJtP4HFWvR57QYv-Y072Xhcr1fFArLE_5jUWwZYlHAfg2Cmp68gcMF3Rxo_NtjHCYvoACLaeIvjnRzoqQKidoCIClmbWce4m0L0XDyL_IUh6wnhX9OHrtsJHw5DqVvNYdydKdct9fohshGMBJy_50p9f4zSHler03dXLCv3HwOyqWE171WmUbpBqoejJRy-P8BNfIXLf-_lA-GWZYPxm1pS88u9snaCfmVr3Rln0ZTGzEbMQ34Uajh73DgGNh8Juv-nXpoJ0DMbA8mVHFyN2xRJ1aCVp0XWXDIGSqZfCdIslUhRXnxkwJUn-38yiIp5odj2MZ_e-L20JTdIrW7UaVGRSV2l2fd3WMs4ZM4sy2UBujlF-GVfWunr0d5p0ABX8QklJfUqk7Tlx18SLnh1aDEsHDPmKszyD2MdkdGrQNGWUwv4ytI1i2AS46Cg4VymLALpMzkGiRkoo_EMAF26LS1nkQBs10JGao_D93szJiVAF7Ng3haMCvVwILHQNH4QyMUioS1gaWNBRLaAxsNSTSpkpEAPw0rjPXXDl_B9wJoLvqXjPMxytnM1QxaP2vbKnv2aUqtlhowiLzXv_T-pe4GtBhz_ERXZF8j2wAzvZkWCCepaSeMm3RquYNj8-8kPpoEaqsMQp5MTXj3DgE",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYjBmYjg4MDNhZjBjNzkyZjU0MDM2YzI2N2U0MTFiODI5NzAyZTY4MmFmOTNjYjc1Y2ZlNWU3Yzk0ZGU5Njg5MDc1ZTk3OGZjZTQ4MDU2ZDgiLCJpYXQiOjE2OTUwOTE4MzAuNDc5ODE3LCJuYmYiOjE2OTUwOTE4MzAuNDc5ODIsImV4cCI6MTcyNjcxNDIzMC40NzY1NDEsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.RUmAI9KaVJ23AnvV-ZsLIiDLqzBx620tfmSerpybO7WNZ7xiUiw5qMyFuvR2I-bPBi78Eh5-3ZoQVlHGJxHns3uh2nXj04ktC6CYme231NsQkQgInN0gnVFGf9LSETQ6ioS4rHHKWOtUPnKr3-IgaLChK5h93NxcRRXgylNlqwXfDu8LvWNlenRusOHeGTdIz705e53XZImmfndscONhcfmT_EbtS6GIj7Qaf7Aai5VorSA-Jo61dzaOqAml8UL275MkWeqwoslyr6sacd5OW9yOLlFbwnp5SwH0he29_cAy2EmXuFzVjbT-7PYTzNLSi3QIdqGLkrbq7UHephahDWkH1SKjCA_xBZw-9mUjGPbTFy95DUBnLWMxxRe5qVwKTYf-F6tgBvDWB7xLYfLa0S3WU7cevVKIVtocoeZ70pOwgjIRKReeNvG-hyPMfk6VR8rfepSY3MzNhoHx3d1gROqgNCuP54abXhMj2R_3hhcNc92HuO7znX3T73ZU2korsD4fTkU6DafYEC8hRxFsQzBeD4R1S7blbi3PzC85-qctKPGBMAjJkyl4bme88F7S9KD8a27zUUZSex7W7o0F-aHeMjFKtu59iZgYxvaCxLoFdo3aRi6_ayrUVaCmxce7u-Kjt4ucw_hfhTjgv4RdnS8_LeV0oGMgC2lRFHi2Kok",
 								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/auth/get-user",
+							"raw": "http://localhost/project/sci-work-be/public/api/auth/get-user",
 							"protocol": "http",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"localhost"
 							],
-							"port": "8000",
 							"path": [
+								"project",
+								"sci-work-be",
+								"public",
 								"api",
 								"auth",
 								"get-user"
@@ -285,6 +282,44 @@
 								"auth",
 								"forgot-password",
 								"TwhZNxbq2KfIit0zqCpFYfrAD19boQse2P896v1LFCewViweqncRgmTuSdLm"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update-user",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYjBmYjg4MDNhZjBjNzkyZjU0MDM2YzI2N2U0MTFiODI5NzAyZTY4MmFmOTNjYjc1Y2ZlNWU3Yzk0ZGU5Njg5MDc1ZTk3OGZjZTQ4MDU2ZDgiLCJpYXQiOjE2OTUwOTE4MzAuNDc5ODE3LCJuYmYiOjE2OTUwOTE4MzAuNDc5ODIsImV4cCI6MTcyNjcxNDIzMC40NzY1NDEsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.RUmAI9KaVJ23AnvV-ZsLIiDLqzBx620tfmSerpybO7WNZ7xiUiw5qMyFuvR2I-bPBi78Eh5-3ZoQVlHGJxHns3uh2nXj04ktC6CYme231NsQkQgInN0gnVFGf9LSETQ6ioS4rHHKWOtUPnKr3-IgaLChK5h93NxcRRXgylNlqwXfDu8LvWNlenRusOHeGTdIz705e53XZImmfndscONhcfmT_EbtS6GIj7Qaf7Aai5VorSA-Jo61dzaOqAml8UL275MkWeqwoslyr6sacd5OW9yOLlFbwnp5SwH0he29_cAy2EmXuFzVjbT-7PYTzNLSi3QIdqGLkrbq7UHephahDWkH1SKjCA_xBZw-9mUjGPbTFy95DUBnLWMxxRe5qVwKTYf-F6tgBvDWB7xLYfLa0S3WU7cevVKIVtocoeZ70pOwgjIRKReeNvG-hyPMfk6VR8rfepSY3MzNhoHx3d1gROqgNCuP54abXhMj2R_3hhcNc92HuO7znX3T73ZU2korsD4fTkU6DafYEC8hRxFsQzBeD4R1S7blbi3PzC85-qctKPGBMAjJkyl4bme88F7S9KD8a27zUUZSex7W7o0F-aHeMjFKtu59iZgYxvaCxLoFdo3aRi6_ayrUVaCmxce7u-Kjt4ucw_hfhTjgv4RdnS8_LeV0oGMgC2lRFHi2Kok",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"first_name\":\"Đức\",\"last_name\":\"Đoàn Minh\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost/project/sci-work-be/public/api/auth/update-user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"project",
+								"sci-work-be",
+								"public",
+								"api",
+								"auth",
+								"update-user"
 							]
 						}
 					},
@@ -398,7 +433,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost/project/sci-work-be/public/api/topic/4",
+							"raw": "http://localhost/project/sci-work-be/public/api/topic/5",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -409,7 +444,7 @@
 								"public",
 								"api",
 								"topic",
-								"4"
+								"5"
 							]
 						}
 					},
@@ -436,19 +471,18 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/topic/4",
+							"raw": "http://localhost/project/sci-work-be/public/api/topic/1",
 							"protocol": "http",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"localhost"
 							],
-							"port": "8000",
 							"path": [
+								"project",
+								"sci-work-be",
+								"public",
 								"api",
 								"topic",
-								"4"
+								"1"
 							]
 						}
 					},
@@ -488,6 +522,139 @@
 								"api",
 								"topic",
 								"17"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "UserList",
+			"item": [
+				{
+					"name": "userlist",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYjBmYjg4MDNhZjBjNzkyZjU0MDM2YzI2N2U0MTFiODI5NzAyZTY4MmFmOTNjYjc1Y2ZlNWU3Yzk0ZGU5Njg5MDc1ZTk3OGZjZTQ4MDU2ZDgiLCJpYXQiOjE2OTUwOTE4MzAuNDc5ODE3LCJuYmYiOjE2OTUwOTE4MzAuNDc5ODIsImV4cCI6MTcyNjcxNDIzMC40NzY1NDEsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.RUmAI9KaVJ23AnvV-ZsLIiDLqzBx620tfmSerpybO7WNZ7xiUiw5qMyFuvR2I-bPBi78Eh5-3ZoQVlHGJxHns3uh2nXj04ktC6CYme231NsQkQgInN0gnVFGf9LSETQ6ioS4rHHKWOtUPnKr3-IgaLChK5h93NxcRRXgylNlqwXfDu8LvWNlenRusOHeGTdIz705e53XZImmfndscONhcfmT_EbtS6GIj7Qaf7Aai5VorSA-Jo61dzaOqAml8UL275MkWeqwoslyr6sacd5OW9yOLlFbwnp5SwH0he29_cAy2EmXuFzVjbT-7PYTzNLSi3QIdqGLkrbq7UHephahDWkH1SKjCA_xBZw-9mUjGPbTFy95DUBnLWMxxRe5qVwKTYf-F6tgBvDWB7xLYfLa0S3WU7cevVKIVtocoeZ70pOwgjIRKReeNvG-hyPMfk6VR8rfepSY3MzNhoHx3d1gROqgNCuP54abXhMj2R_3hhcNc92HuO7znX3T73ZU2korsD4fTkU6DafYEC8hRxFsQzBeD4R1S7blbi3PzC85-qctKPGBMAjJkyl4bme88F7S9KD8a27zUUZSex7W7o0F-aHeMjFKtu59iZgYxvaCxLoFdo3aRi6_ayrUVaCmxce7u-Kjt4ucw_hfhTjgv4RdnS8_LeV0oGMgC2lRFHi2Kok",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost/project/sci-work-be/public/api/user-list/?topic_id=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"project",
+								"sci-work-be",
+								"public",
+								"api",
+								"user-list",
+								""
+							],
+							"query": [
+								{
+									"key": "topic_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add user",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYjBmYjg4MDNhZjBjNzkyZjU0MDM2YzI2N2U0MTFiODI5NzAyZTY4MmFmOTNjYjc1Y2ZlNWU3Yzk0ZGU5Njg5MDc1ZTk3OGZjZTQ4MDU2ZDgiLCJpYXQiOjE2OTUwOTE4MzAuNDc5ODE3LCJuYmYiOjE2OTUwOTE4MzAuNDc5ODIsImV4cCI6MTcyNjcxNDIzMC40NzY1NDEsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.RUmAI9KaVJ23AnvV-ZsLIiDLqzBx620tfmSerpybO7WNZ7xiUiw5qMyFuvR2I-bPBi78Eh5-3ZoQVlHGJxHns3uh2nXj04ktC6CYme231NsQkQgInN0gnVFGf9LSETQ6ioS4rHHKWOtUPnKr3-IgaLChK5h93NxcRRXgylNlqwXfDu8LvWNlenRusOHeGTdIz705e53XZImmfndscONhcfmT_EbtS6GIj7Qaf7Aai5VorSA-Jo61dzaOqAml8UL275MkWeqwoslyr6sacd5OW9yOLlFbwnp5SwH0he29_cAy2EmXuFzVjbT-7PYTzNLSi3QIdqGLkrbq7UHephahDWkH1SKjCA_xBZw-9mUjGPbTFy95DUBnLWMxxRe5qVwKTYf-F6tgBvDWB7xLYfLa0S3WU7cevVKIVtocoeZ70pOwgjIRKReeNvG-hyPMfk6VR8rfepSY3MzNhoHx3d1gROqgNCuP54abXhMj2R_3hhcNc92HuO7znX3T73ZU2korsD4fTkU6DafYEC8hRxFsQzBeD4R1S7blbi3PzC85-qctKPGBMAjJkyl4bme88F7S9KD8a27zUUZSex7W7o0F-aHeMjFKtu59iZgYxvaCxLoFdo3aRi6_ayrUVaCmxce7u-Kjt4ucw_hfhTjgv4RdnS8_LeV0oGMgC2lRFHi2Kok",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"topic_id\": 1,\r\n    \"user_id\": 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost/project/sci-work-be/public/api/user-list/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"project",
+								"sci-work-be",
+								"public",
+								"api",
+								"user-list",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete user",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYjBmYjg4MDNhZjBjNzkyZjU0MDM2YzI2N2U0MTFiODI5NzAyZTY4MmFmOTNjYjc1Y2ZlNWU3Yzk0ZGU5Njg5MDc1ZTk3OGZjZTQ4MDU2ZDgiLCJpYXQiOjE2OTUwOTE4MzAuNDc5ODE3LCJuYmYiOjE2OTUwOTE4MzAuNDc5ODIsImV4cCI6MTcyNjcxNDIzMC40NzY1NDEsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.RUmAI9KaVJ23AnvV-ZsLIiDLqzBx620tfmSerpybO7WNZ7xiUiw5qMyFuvR2I-bPBi78Eh5-3ZoQVlHGJxHns3uh2nXj04ktC6CYme231NsQkQgInN0gnVFGf9LSETQ6ioS4rHHKWOtUPnKr3-IgaLChK5h93NxcRRXgylNlqwXfDu8LvWNlenRusOHeGTdIz705e53XZImmfndscONhcfmT_EbtS6GIj7Qaf7Aai5VorSA-Jo61dzaOqAml8UL275MkWeqwoslyr6sacd5OW9yOLlFbwnp5SwH0he29_cAy2EmXuFzVjbT-7PYTzNLSi3QIdqGLkrbq7UHephahDWkH1SKjCA_xBZw-9mUjGPbTFy95DUBnLWMxxRe5qVwKTYf-F6tgBvDWB7xLYfLa0S3WU7cevVKIVtocoeZ70pOwgjIRKReeNvG-hyPMfk6VR8rfepSY3MzNhoHx3d1gROqgNCuP54abXhMj2R_3hhcNc92HuO7znX3T73ZU2korsD4fTkU6DafYEC8hRxFsQzBeD4R1S7blbi3PzC85-qctKPGBMAjJkyl4bme88F7S9KD8a27zUUZSex7W7o0F-aHeMjFKtu59iZgYxvaCxLoFdo3aRi6_ayrUVaCmxce7u-Kjt4ucw_hfhTjgv4RdnS8_LeV0oGMgC2lRFHi2Kok",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"topic_id\": 1,\r\n    \"user_id\": 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost/project/sci-work-be/public/api/user-list/delete?topic_id=2&user_id=3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"project",
+								"sci-work-be",
+								"public",
+								"api",
+								"user-list",
+								"delete"
+							],
+							"query": [
+								{
+									"key": "topic_id",
+									"value": "2"
+								},
+								{
+									"key": "user_id",
+									"value": "3"
+								}
 							]
 						}
 					},
