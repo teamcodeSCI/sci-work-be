@@ -116,6 +116,12 @@ class UserlistController extends Controller
                     'message' => 'User already exist in topic',
                 ], 400);
             }
+            $position = $user->position;
+            $user['position_code'] = $position->code;
+            $user['position_name'] = $position->name;
+            unset($user['position']);
+            unset($user['position_id']);
+
             UserList::create(['user_id' => $input['user_id'], 'topic_id' => $topic->id]);
             return response()->json([
                 'status' => true,
@@ -170,8 +176,68 @@ class UserlistController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
         //
+        try {
+            $input = $request->query();
+            $ownerId = auth('api')->user()->id;
+            $owner = User::find($ownerId);
+            if ($owner === null || !$owner) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Owner not found',
+                ], 400);
+            }
+            if ($owner['id'] === $input['user_id']) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Can not remove owner',
+                ], 400);
+            }
+            if (!array_key_exists('topic_id', $input) || !array_key_exists('user_id', $input)) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'topic_id or user_id not found',
+                ], 400);
+            }
+            $topic = Topic::find($input['topic_id']);
+            if (!$topic) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Topic not found',
+                ], 400);
+            }
+            $user = User::select('id', 'first_name', 'last_name', 'background', 'email', 'position_id')->find($input['user_id']);
+            if (!$user) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'User not found',
+                ], 400);
+            }
+            $userList = UserList::where('topic_id', '=', $topic->id)->where('user_id', '=', $user->id)->first();
+            if (!$userList) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'User not found in topic',
+                ], 400);
+            }
+            $position = $user->position;
+            $user['position_code'] = $position->code;
+            $user['position_name'] = $position->name;
+            unset($user['position']);
+            unset($user['position_id']);
+            $userList->delete();
+            return response()->json([
+                'status' => true,
+                'message' => 'Success',
+                'data' => $user
+            ], 200);
+        } catch (Exception $e) {
+            return response()->json([
+                'status' => false,
+                'message' => $e
+            ], 500);
+        }
     }
 }

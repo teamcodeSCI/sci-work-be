@@ -48,5 +48,6 @@ Route::middleware(['auth:api'])->group(function () {
     Route::prefix('user-list')->group(function () {
         Route::get('/', [UserlistController::class, 'index']);
         Route::post('/create', [UserlistController::class, 'store']);
+        Route::delete('/delete', [UserlistController::class, 'destroy']);
     });
 });
