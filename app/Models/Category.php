@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     use HasFactory;
+    protected $table = 'categories';
+    protected $primaryKey = 'id';
+    protected $fillable = ['topic_id', 'user_id', 'name'];
+    public function user()
+    {
+        return $this->belongsTo('Models\User', 'user_id', 'id');
+    }
 }
