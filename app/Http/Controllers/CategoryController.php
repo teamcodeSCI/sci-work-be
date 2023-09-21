@@ -19,7 +19,7 @@ class CategoryController extends Controller
     public function index(Request $request)
     {
         //
-        // try {
+        try {
         $input = $request->query();
         if (!array_key_exists('topic_id', $input)) {
             return response()->json([
@@ -45,12 +45,12 @@ class CategoryController extends Controller
             'message' => 'Success',
             'data' => $categories
         ], 200);
-        // } catch (Exception $e) {
-        //     return response()->json([
-        //         'status' => false,
-        //         'message' => $e
-        //     ], 500);
-        // }
+        } catch (Exception $e) {
+            return response()->json([
+                'status' => false,
+                'message' => $e
+            ], 500);
+        }
     }
 
     /**
