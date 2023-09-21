@@ -37,8 +37,6 @@ class CategoryController extends Controller
         $categories = Category::all();
         foreach ($categories as $key) {
             $key['items'] = Item::where('category_id', '=', $key['id'])->get();
-            unset($key['created_at']);
-            unset($key['updated_at']);
         }
 
 
@@ -94,8 +92,7 @@ class CategoryController extends Controller
 
             $category = Category::create(['user_id' => $user['id'], 'topic_id' => $input['topic_id'], 'name' => $input['name']]);
             $category['items'] = Item::where('category_id', '=', $category['id'])->get();
-            unset($category['created_at']);
-            unset($category['updated_at']);
+
             return response()->json([
                 'status' => true,
                 'message' => 'Success',
@@ -141,6 +138,29 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         //
+        try {
+            $input = $request->all();
+            $category = Category::find($id);
+            if (!$category) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Category not found'
+                ], 400);
+            }
+            $category->update(['name' => $input['name']]);
+            $category['items'] = Item::where('category_id', '=', $category['id'])->get();
+
+            return response()->json([
+                'status' => true,
+                'message' => 'Success',
+                'data' => $category
+            ], 200);
+        } catch (Exception $e) {
+            return response()->json([
+                'status' => false,
+                'message' => $e
+            ], 500);
+        }
     }
 
     /**
@@ -152,5 +172,27 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         //
+        try {
+
+            $category = Category::find($id);
+            if (!$category) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Category not found'
+                ], 400);
+            }
+            $category->delete();
+
+            return response()->json([
+                'status' => true,
+                'message' => 'Success',
+                'data' => $category
+            ], 200);
+        } catch (Exception $e) {
+            return response()->json([
+                'status' => false,
+                'message' => $e
+            ], 500);
+        }
     }
 }
