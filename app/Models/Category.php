@@ -15,4 +15,8 @@ class Category extends Model
     {
         return $this->belongsTo('Models\User', 'user_id', 'id');
     }
+    public function topic()
+    {
+        return $this->hasMany('Models\Topic', 'id', 'topic_id');
+    }
 }

@@ -1,10 +1,10 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PositionController;
 use App\Http\Controllers\TopicController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserlistController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -44,6 +44,20 @@ Route::middleware(['auth:api'])->group(function () {
         Route::get('/{topic}', [TopicController::class, 'show']);
         Route::put('/{topic}', [TopicController::class, 'update']);
         Route::delete('/{topic}', [TopicController::class, 'destroy']);
+    });
+    Route::prefix('category')->group(function () {
+        Route::get('/', [CategoryController::class, 'index']);
+        Route::post('/create', [CategoryController::class, 'store']);
+        Route::get('/{category}', [CategoryController::class, 'show']);
+        Route::put('/{category}', [CategoryController::class, 'update']);
+        Route::delete('/{category}', [CategoryController::class, 'destroy']);
+    });
+    Route::prefix('item')->group(function () {
+        Route::get('/', [CategoryController::class, 'index']);
+        Route::post('/create', [CategoryController::class, 'store']);
+        Route::get('/{item}', [CategoryController::class, 'show']);
+        Route::put('/{item}', [CategoryController::class, 'update']);
+        Route::delete('/{item}', [CategoryController::class, 'destroy']);
     });
     Route::prefix('user-list')->group(function () {
         Route::get('/', [UserlistController::class, 'index']);
