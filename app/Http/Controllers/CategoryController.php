@@ -20,31 +20,29 @@ class CategoryController extends Controller
     {
         //
         try {
-        $input = $request->query();
-        if (!array_key_exists('topic_id', $input)) {
+            $input = $request->query();
+            if (!array_key_exists('topic_id', $input)) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'topic_id not found',
+                ], 400);
+            }
+            $topic = Topic::find($input['topic_id']);
+            if (!$topic) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Topic not found'
+                ], 400);
+            }
+            $categories = Category::all();
+            foreach ($categories as $key) {
+                $key['items'] = Item::where('category_id', '=', $key['id'])->orderBy('index', 'asc')->get();
+            }
             return response()->json([
-                'status' => false,
-                'message' => 'topic_id not found',
-            ], 400);
-        }
-        $topic = Topic::find($input['topic_id']);
-        if (!$topic) {
-            return response()->json([
-                'status' => false,
-                'message' => 'Topic not found'
-            ], 400);
-        }
-        $categories = Category::all();
-        foreach ($categories as $key) {
-            $key['items'] = Item::where('category_id', '=', $key['id'])->get();
-        }
-
-
-        return response()->json([
-            'status' => true,
-            'message' => 'Success',
-            'data' => $categories
-        ], 200);
+                'status' => true,
+                'message' => 'Success',
+                'data' => $categories
+            ], 200);
         } catch (Exception $e) {
             return response()->json([
                 'status' => false,
