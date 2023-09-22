@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ItemController;
 use App\Http\Controllers\PositionController;
 use App\Http\Controllers\TopicController;
 use App\Http\Controllers\UserController;
@@ -53,11 +54,11 @@ Route::middleware(['auth:api'])->group(function () {
         Route::delete('/{category}', [CategoryController::class, 'destroy']);
     });
     Route::prefix('item')->group(function () {
-        Route::get('/', [CategoryController::class, 'index']);
-        Route::post('/create', [CategoryController::class, 'store']);
-        Route::get('/{item}', [CategoryController::class, 'show']);
-        Route::put('/{item}', [CategoryController::class, 'update']);
-        Route::delete('/{item}', [CategoryController::class, 'destroy']);
+        Route::get('/', [ItemController::class, 'index']);
+        Route::post('/create', [ItemController::class, 'store']);
+        Route::get('/{item}', [ItemController::class, 'show']);
+        Route::put('/{item}', [ItemController::class, 'update']);
+        Route::delete('/{item}', [ItemController::class, 'destroy']);
     });
     Route::prefix('user-list')->group(function () {
         Route::get('/', [UserlistController::class, 'index']);

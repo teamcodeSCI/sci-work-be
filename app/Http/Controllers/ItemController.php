@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Item;
+use App\Models\User;
+use Exception;
 use Illuminate\Http\Request;
 
 class ItemController extends Controller
@@ -35,6 +39,41 @@ class ItemController extends Controller
     public function store(Request $request)
     {
         //
+        try {
+            $input = $request->all();
+            $userId = auth('api')->user()->id;
+            $user = User::find($userId);
+            if ($user === null || !$user) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'User not found',
+                ], 400);
+            }
+            $category = Category::find($input['category_id']);
+            if (!$category) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Category not found'
+                ], 400);
+            }
+            $items = Item::where('category_id', '=', $category['id'])->get();
+            $item = Item::create([
+                'category_id' => $category['id'],
+                'user_id' => $user['id'],
+                'index' => count($items),
+                'content' => $input['content']
+            ]);
+            return response()->json([
+                'status' => true,
+                'message' => 'Success',
+                'data' => $item
+            ], 200);
+        } catch (Exception $e) {
+            return response()->json([
+                'status' => false,
+                'message' => $e
+            ], 500);
+        }
     }
 
     /**
@@ -69,6 +108,34 @@ class ItemController extends Controller
     public function update(Request $request, $id)
     {
         //
+        try {
+            $input = $request->all();
+            $item = Item::find($id);
+            if (!$item) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Item not found'
+                ], 400);
+            }
+            $category = Category::find($input['category_id']);
+            if (!$category) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Category not found'
+                ], 400);
+            }
+            $item->update($input);
+            return response()->json([
+                'status' => true,
+                'message' => 'Success',
+                'data' => $item
+            ], 200);
+        } catch (Exception $e) {
+            return response()->json([
+                'status' => false,
+                'message' => $e
+            ], 500);
+        }
     }
 
     /**

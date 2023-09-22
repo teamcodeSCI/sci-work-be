@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('user_id');
+            $table->bigInteger('index');
             $table->longText('content');
             $table->timestamps();
 
