@@ -34,7 +34,7 @@ class CategoryController extends Controller
                     'message' => 'Topic not found'
                 ], 400);
             }
-            $categories = Category::all();
+            $categories = Category::where('topic_id', '=', $topic['id'])->get();
             foreach ($categories as $key) {
                 $key['items'] = Item::where('category_id', '=', $key['id'])->orderBy('index', 'asc')->get();
             }
