@@ -38,7 +38,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"code\":\"DESIGN\",\r\n    \"name\":\"Thiết kế\"\r\n}",
+							"raw": "{\r\n    \"code\":\"CODE\",\r\n    \"name\":\"Phát triển web\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -655,6 +655,338 @@
 									"key": "user_id",
 									"value": "3"
 								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "create category",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNGFiNTA1NzM0NjhiMWQ0NmU0ZDNkNWE2MWQzYTAzMGMxMTUyMWZmNjU1NjAxMzRmYjIwZjAzNTU3MTU3ZGUwODk3ODAwZTQxODc4ZGJjNWUiLCJpYXQiOjE2OTUyNjU0NTcuMjU0OTc0LCJuYmYiOjE2OTUyNjU0NTcuMjU0OTc2LCJleHAiOjE3MjY4ODc4NTcuMjUxODQyLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.XAHggXJKNY61egicyNePm4NCfnpIwouH3-EKEho2xHiDoYeNGzzKtcNdggwSOUcPCk26waBjTHYw-r83LAu2nWuWtdrtSZPEJHYrBQE9OKqAS21nI98TECbWWzvytvcCWiGx-Y32KdfuRKLG8otoTHRYom8O9ir_0RjSKX2p6z4aX690YFls1ExYzHw2otCLevYZ1llf_RrpEozSpUDeIQ2h4qgNbhNHBvY9lIe0CFAPs21TwE7QZhSfNrvuj7Cw2-fBKvhe_VhU6_dmLjI67bwL0-elQYfrFXO40QKiIaIOS3U0iyNhCkWC47X4mmD8rZEoYrRDp7nvQx-yMP0u9_mh8H15f0IEK1WhiF5vngVNHr1_jv0UBAydkHLgbWw0XyDN2yGmoqsfQ0zDcIFFm5zsg-eXYvXYMfssR-pRl3lgf7dFKzqGm0LIcVpSTq229zyWLY7AzWKB1nKRStsttvwIP81p1AbUIwyZQ_WuwOGM2qMFCRqvC12ShhqYau58zdTJKNNsaJr7Gv82h6HEVSGa_UmMs25xiYfyAh_iRLeMbedcrpJKue9algc6YXMikfeX8_omGJ0RLbqiw0wp6EpC1sEsBkZUUETWmfr21ADDoTchapHd-c-s7d__qryMW9_Gc2cUSgGpeXaWyiix2OMBISmta1UW-isAOUdKD2k",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"topic_id\":1,\"name\":\"Test1\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost/project/sci-work-be/public/api/category/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"project",
+								"sci-work-be",
+								"public",
+								"api",
+								"category",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get category",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzIiwianRpIjoiMThiNDc5NjVjYWNlY2VjNDM4NGNkNTMwOWMzY2U3Nzg5ZjQ1YWFiYTU4MjI3YWE4NWYzZjUwNzcwN2U0NTE0MGMxMzUwYTU3ZTIzMzBhZjUiLCJpYXQiOjE2OTUzNjU1MTUuMzA0MTgzLCJuYmYiOjE2OTUzNjU1MTUuMzA0MTg3LCJleHAiOjE3MjY5ODc5MTUuMjU2MzA3LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.EXMuySlaxa9rZGw_TpP3P_xLlI_-rxbZZQc97FMlFhvUzgLY-Rk9lxQAT86TMuCbCluZ2n3L0I3XdrvIUknwgrlxlk0NH-M4PZ9Nu6Hig3QF_2QSNmsmipM7W3Iq36ookUcUZhr4p72NW5eJpcrmVIp935n6MJ1tk3-_c_ePV5Tv1tFpk11dSOA5KRrt40tP5lfK-DxU8-mP8yIRu-rT7zPAe6abeGSMxbHfLMKyhoIigBt6MPoDmS1raQ2XPBQsazBNA4Tb3yOUHdj5CDaBKyvetXhMiN4xXkp5oBn5DsEVoYSDOs0DPrctZzMYOIMDo5vgOR_F03lj2DMlIJKolL3tvXF6BSLXUahqBWge-wWSrFQQ9ovTjVaZGnVnt20BhYse438QJ2kkqFrXFeQeAIUHVO_OwG4Z6MgLfz-q4kKLR6iTR4lkij6dq1lOgwp0r7JvoytIiiBc1zQRGH6yFBWaeD93DhyaMfSz3Bfk0hPHQPpqGnqWLfWBBSAzxqoS6gDzO8t4ZYy22i1FI3O_mi7rLPrwwIleHUkskvKjUekEqnWe6OOY7Kw0rJ0AbxVAq8tdhXPSdhf1sya0wL8gpIfEjXwWM8TC9MsYo0XJx23tgNHVomTP1w6TLbHVdn44brUUrRTnqlerRuyUjUBGDUUb1MZYDSKrq1AkDIOxJBY",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"topic_id\":1,\"name\":\"Test\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost/project/sci-work-be/public/api/category/?topic_id=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"project",
+								"sci-work-be",
+								"public",
+								"api",
+								"category",
+								""
+							],
+							"query": [
+								{
+									"key": "topic_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update category",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNGFiNTA1NzM0NjhiMWQ0NmU0ZDNkNWE2MWQzYTAzMGMxMTUyMWZmNjU1NjAxMzRmYjIwZjAzNTU3MTU3ZGUwODk3ODAwZTQxODc4ZGJjNWUiLCJpYXQiOjE2OTUyNjU0NTcuMjU0OTc0LCJuYmYiOjE2OTUyNjU0NTcuMjU0OTc2LCJleHAiOjE3MjY4ODc4NTcuMjUxODQyLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.XAHggXJKNY61egicyNePm4NCfnpIwouH3-EKEho2xHiDoYeNGzzKtcNdggwSOUcPCk26waBjTHYw-r83LAu2nWuWtdrtSZPEJHYrBQE9OKqAS21nI98TECbWWzvytvcCWiGx-Y32KdfuRKLG8otoTHRYom8O9ir_0RjSKX2p6z4aX690YFls1ExYzHw2otCLevYZ1llf_RrpEozSpUDeIQ2h4qgNbhNHBvY9lIe0CFAPs21TwE7QZhSfNrvuj7Cw2-fBKvhe_VhU6_dmLjI67bwL0-elQYfrFXO40QKiIaIOS3U0iyNhCkWC47X4mmD8rZEoYrRDp7nvQx-yMP0u9_mh8H15f0IEK1WhiF5vngVNHr1_jv0UBAydkHLgbWw0XyDN2yGmoqsfQ0zDcIFFm5zsg-eXYvXYMfssR-pRl3lgf7dFKzqGm0LIcVpSTq229zyWLY7AzWKB1nKRStsttvwIP81p1AbUIwyZQ_WuwOGM2qMFCRqvC12ShhqYau58zdTJKNNsaJr7Gv82h6HEVSGa_UmMs25xiYfyAh_iRLeMbedcrpJKue9algc6YXMikfeX8_omGJ0RLbqiw0wp6EpC1sEsBkZUUETWmfr21ADDoTchapHd-c-s7d__qryMW9_Gc2cUSgGpeXaWyiix2OMBISmta1UW-isAOUdKD2k",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"Test\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost/project/sci-work-be/public/api/category/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"project",
+								"sci-work-be",
+								"public",
+								"api",
+								"category",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete category",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNGFiNTA1NzM0NjhiMWQ0NmU0ZDNkNWE2MWQzYTAzMGMxMTUyMWZmNjU1NjAxMzRmYjIwZjAzNTU3MTU3ZGUwODk3ODAwZTQxODc4ZGJjNWUiLCJpYXQiOjE2OTUyNjU0NTcuMjU0OTc0LCJuYmYiOjE2OTUyNjU0NTcuMjU0OTc2LCJleHAiOjE3MjY4ODc4NTcuMjUxODQyLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.XAHggXJKNY61egicyNePm4NCfnpIwouH3-EKEho2xHiDoYeNGzzKtcNdggwSOUcPCk26waBjTHYw-r83LAu2nWuWtdrtSZPEJHYrBQE9OKqAS21nI98TECbWWzvytvcCWiGx-Y32KdfuRKLG8otoTHRYom8O9ir_0RjSKX2p6z4aX690YFls1ExYzHw2otCLevYZ1llf_RrpEozSpUDeIQ2h4qgNbhNHBvY9lIe0CFAPs21TwE7QZhSfNrvuj7Cw2-fBKvhe_VhU6_dmLjI67bwL0-elQYfrFXO40QKiIaIOS3U0iyNhCkWC47X4mmD8rZEoYrRDp7nvQx-yMP0u9_mh8H15f0IEK1WhiF5vngVNHr1_jv0UBAydkHLgbWw0XyDN2yGmoqsfQ0zDcIFFm5zsg-eXYvXYMfssR-pRl3lgf7dFKzqGm0LIcVpSTq229zyWLY7AzWKB1nKRStsttvwIP81p1AbUIwyZQ_WuwOGM2qMFCRqvC12ShhqYau58zdTJKNNsaJr7Gv82h6HEVSGa_UmMs25xiYfyAh_iRLeMbedcrpJKue9algc6YXMikfeX8_omGJ0RLbqiw0wp6EpC1sEsBkZUUETWmfr21ADDoTchapHd-c-s7d__qryMW9_Gc2cUSgGpeXaWyiix2OMBISmta1UW-isAOUdKD2k",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"topic_id\":1,\"name\":\"Test\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost/project/sci-work-be/public/api/category/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"project",
+								"sci-work-be",
+								"public",
+								"api",
+								"category",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Item",
+			"item": [
+				{
+					"name": "create item",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzIiwianRpIjoiMThiNDc5NjVjYWNlY2VjNDM4NGNkNTMwOWMzY2U3Nzg5ZjQ1YWFiYTU4MjI3YWE4NWYzZjUwNzcwN2U0NTE0MGMxMzUwYTU3ZTIzMzBhZjUiLCJpYXQiOjE2OTUzNjU1MTUuMzA0MTgzLCJuYmYiOjE2OTUzNjU1MTUuMzA0MTg3LCJleHAiOjE3MjY5ODc5MTUuMjU2MzA3LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.EXMuySlaxa9rZGw_TpP3P_xLlI_-rxbZZQc97FMlFhvUzgLY-Rk9lxQAT86TMuCbCluZ2n3L0I3XdrvIUknwgrlxlk0NH-M4PZ9Nu6Hig3QF_2QSNmsmipM7W3Iq36ookUcUZhr4p72NW5eJpcrmVIp935n6MJ1tk3-_c_ePV5Tv1tFpk11dSOA5KRrt40tP5lfK-DxU8-mP8yIRu-rT7zPAe6abeGSMxbHfLMKyhoIigBt6MPoDmS1raQ2XPBQsazBNA4Tb3yOUHdj5CDaBKyvetXhMiN4xXkp5oBn5DsEVoYSDOs0DPrctZzMYOIMDo5vgOR_F03lj2DMlIJKolL3tvXF6BSLXUahqBWge-wWSrFQQ9ovTjVaZGnVnt20BhYse438QJ2kkqFrXFeQeAIUHVO_OwG4Z6MgLfz-q4kKLR6iTR4lkij6dq1lOgwp0r7JvoytIiiBc1zQRGH6yFBWaeD93DhyaMfSz3Bfk0hPHQPpqGnqWLfWBBSAzxqoS6gDzO8t4ZYy22i1FI3O_mi7rLPrwwIleHUkskvKjUekEqnWe6OOY7Kw0rJ0AbxVAq8tdhXPSdhf1sya0wL8gpIfEjXwWM8TC9MsYo0XJx23tgNHVomTP1w6TLbHVdn44brUUrRTnqlerRuyUjUBGDUUb1MZYDSKrq1AkDIOxJBY",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"category_id\":1,\"content\":\"Test1\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost/project/sci-work-be/public/api/item/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"project",
+								"sci-work-be",
+								"public",
+								"api",
+								"item",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get category",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNGFiNTA1NzM0NjhiMWQ0NmU0ZDNkNWE2MWQzYTAzMGMxMTUyMWZmNjU1NjAxMzRmYjIwZjAzNTU3MTU3ZGUwODk3ODAwZTQxODc4ZGJjNWUiLCJpYXQiOjE2OTUyNjU0NTcuMjU0OTc0LCJuYmYiOjE2OTUyNjU0NTcuMjU0OTc2LCJleHAiOjE3MjY4ODc4NTcuMjUxODQyLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.XAHggXJKNY61egicyNePm4NCfnpIwouH3-EKEho2xHiDoYeNGzzKtcNdggwSOUcPCk26waBjTHYw-r83LAu2nWuWtdrtSZPEJHYrBQE9OKqAS21nI98TECbWWzvytvcCWiGx-Y32KdfuRKLG8otoTHRYom8O9ir_0RjSKX2p6z4aX690YFls1ExYzHw2otCLevYZ1llf_RrpEozSpUDeIQ2h4qgNbhNHBvY9lIe0CFAPs21TwE7QZhSfNrvuj7Cw2-fBKvhe_VhU6_dmLjI67bwL0-elQYfrFXO40QKiIaIOS3U0iyNhCkWC47X4mmD8rZEoYrRDp7nvQx-yMP0u9_mh8H15f0IEK1WhiF5vngVNHr1_jv0UBAydkHLgbWw0XyDN2yGmoqsfQ0zDcIFFm5zsg-eXYvXYMfssR-pRl3lgf7dFKzqGm0LIcVpSTq229zyWLY7AzWKB1nKRStsttvwIP81p1AbUIwyZQ_WuwOGM2qMFCRqvC12ShhqYau58zdTJKNNsaJr7Gv82h6HEVSGa_UmMs25xiYfyAh_iRLeMbedcrpJKue9algc6YXMikfeX8_omGJ0RLbqiw0wp6EpC1sEsBkZUUETWmfr21ADDoTchapHd-c-s7d__qryMW9_Gc2cUSgGpeXaWyiix2OMBISmta1UW-isAOUdKD2k",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"topic_id\":1,\"name\":\"Test\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost/project/sci-work-be/public/api/category/?topic_id=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"project",
+								"sci-work-be",
+								"public",
+								"api",
+								"category",
+								""
+							],
+							"query": [
+								{
+									"key": "topic_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update category",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNGFiNTA1NzM0NjhiMWQ0NmU0ZDNkNWE2MWQzYTAzMGMxMTUyMWZmNjU1NjAxMzRmYjIwZjAzNTU3MTU3ZGUwODk3ODAwZTQxODc4ZGJjNWUiLCJpYXQiOjE2OTUyNjU0NTcuMjU0OTc0LCJuYmYiOjE2OTUyNjU0NTcuMjU0OTc2LCJleHAiOjE3MjY4ODc4NTcuMjUxODQyLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.XAHggXJKNY61egicyNePm4NCfnpIwouH3-EKEho2xHiDoYeNGzzKtcNdggwSOUcPCk26waBjTHYw-r83LAu2nWuWtdrtSZPEJHYrBQE9OKqAS21nI98TECbWWzvytvcCWiGx-Y32KdfuRKLG8otoTHRYom8O9ir_0RjSKX2p6z4aX690YFls1ExYzHw2otCLevYZ1llf_RrpEozSpUDeIQ2h4qgNbhNHBvY9lIe0CFAPs21TwE7QZhSfNrvuj7Cw2-fBKvhe_VhU6_dmLjI67bwL0-elQYfrFXO40QKiIaIOS3U0iyNhCkWC47X4mmD8rZEoYrRDp7nvQx-yMP0u9_mh8H15f0IEK1WhiF5vngVNHr1_jv0UBAydkHLgbWw0XyDN2yGmoqsfQ0zDcIFFm5zsg-eXYvXYMfssR-pRl3lgf7dFKzqGm0LIcVpSTq229zyWLY7AzWKB1nKRStsttvwIP81p1AbUIwyZQ_WuwOGM2qMFCRqvC12ShhqYau58zdTJKNNsaJr7Gv82h6HEVSGa_UmMs25xiYfyAh_iRLeMbedcrpJKue9algc6YXMikfeX8_omGJ0RLbqiw0wp6EpC1sEsBkZUUETWmfr21ADDoTchapHd-c-s7d__qryMW9_Gc2cUSgGpeXaWyiix2OMBISmta1UW-isAOUdKD2k",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"category_id\":1, \"content\":\"Test\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost/project/sci-work-be/public/api/item/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"project",
+								"sci-work-be",
+								"public",
+								"api",
+								"item",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete category",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNGFiNTA1NzM0NjhiMWQ0NmU0ZDNkNWE2MWQzYTAzMGMxMTUyMWZmNjU1NjAxMzRmYjIwZjAzNTU3MTU3ZGUwODk3ODAwZTQxODc4ZGJjNWUiLCJpYXQiOjE2OTUyNjU0NTcuMjU0OTc0LCJuYmYiOjE2OTUyNjU0NTcuMjU0OTc2LCJleHAiOjE3MjY4ODc4NTcuMjUxODQyLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.XAHggXJKNY61egicyNePm4NCfnpIwouH3-EKEho2xHiDoYeNGzzKtcNdggwSOUcPCk26waBjTHYw-r83LAu2nWuWtdrtSZPEJHYrBQE9OKqAS21nI98TECbWWzvytvcCWiGx-Y32KdfuRKLG8otoTHRYom8O9ir_0RjSKX2p6z4aX690YFls1ExYzHw2otCLevYZ1llf_RrpEozSpUDeIQ2h4qgNbhNHBvY9lIe0CFAPs21TwE7QZhSfNrvuj7Cw2-fBKvhe_VhU6_dmLjI67bwL0-elQYfrFXO40QKiIaIOS3U0iyNhCkWC47X4mmD8rZEoYrRDp7nvQx-yMP0u9_mh8H15f0IEK1WhiF5vngVNHr1_jv0UBAydkHLgbWw0XyDN2yGmoqsfQ0zDcIFFm5zsg-eXYvXYMfssR-pRl3lgf7dFKzqGm0LIcVpSTq229zyWLY7AzWKB1nKRStsttvwIP81p1AbUIwyZQ_WuwOGM2qMFCRqvC12ShhqYau58zdTJKNNsaJr7Gv82h6HEVSGa_UmMs25xiYfyAh_iRLeMbedcrpJKue9algc6YXMikfeX8_omGJ0RLbqiw0wp6EpC1sEsBkZUUETWmfr21ADDoTchapHd-c-s7d__qryMW9_Gc2cUSgGpeXaWyiix2OMBISmta1UW-isAOUdKD2k",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"topic_id\":1,\"name\":\"Test\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost/project/sci-work-be/public/api/category/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"project",
+								"sci-work-be",
+								"public",
+								"api",
+								"category",
+								"1"
 							]
 						}
 					},
