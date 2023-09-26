@@ -154,4 +154,38 @@ class UserController extends Controller
             ], 500);
         }
     }
+    public function updatePassword(Request $request)
+    {
+        try {
+            $validator = FacadesValidator::make($request->all(), [
+                'email' => 'required',
+                'password' => 'required',
+                'c_password' => 'required|same:password',
+            ]);
+            if ($validator->fails()) {
+                return response()->json(['status' => false, 'error' => $validator->errors()], 400);
+            }
+            $input = $request->all();
+            $user = User::where('email', '=', $input['email'])->first();
+            if ($user === null || !$user) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'User not found',
+                ], 400);
+            }
+            $input['password'] = bcrypt($input['password']);
+            $user->update($input);
+
+            return response()->json([
+                'status' => true,
+                'message' => 'Success',
+                'data' => $user
+            ], 200);
+        } catch (Exception $e) {
+            return response()->json([
+                'status' => false,
+                'message' => $e
+            ], 500);
+        }
+    }
 }

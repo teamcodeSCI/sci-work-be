@@ -34,6 +34,7 @@ Route::prefix('position')->group(function () {
 Route::prefix('auth')->group(function () {
     Route::post('/login', [UserController::class, 'login']);
     Route::post('/register', [UserController::class, 'register']);
+    Route::put('/update-password', [UserController::class, 'updatePassword']);
 });
 Route::middleware(['auth:api'])->group(function () {
     Route::post('/auth/reset-password', [UserController::class, 'resetPassword']);
