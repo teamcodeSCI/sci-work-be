@@ -61,7 +61,8 @@ class ItemController extends Controller
                 'category_id' => $category['id'],
                 'user_id' => $user['id'],
                 'index' => count($items),
-                'title' => $input['title']
+                'title' => $input['title'],
+                'content' => null
             ]);
             return response()->json([
                 'status' => true,
@@ -109,29 +110,29 @@ class ItemController extends Controller
     {
         //
         try {
-        $input = $request->all();
-        $item = Item::find($id);
-        if (!$item) {
-            return response()->json([
-                'status' => false,
-                'message' => 'Item not found'
-            ], 400);
-        }
-        if (array_key_exists('category_id', $input)) {
-            $category = Category::find($input['category_id']);
-            if (!$category) {
+            $input = $request->all();
+            $item = Item::find($id);
+            if (!$item) {
                 return response()->json([
                     'status' => false,
-                    'message' => 'Category not found'
+                    'message' => 'Item not found'
                 ], 400);
             }
-        }
-        $item->update($input);
-        return response()->json([
-            'status' => true,
-            'message' => 'Success',
-            'data' => $item
-        ], 200);
+            if (array_key_exists('category_id', $input)) {
+                $category = Category::find($input['category_id']);
+                if (!$category) {
+                    return response()->json([
+                        'status' => false,
+                        'message' => 'Category not found'
+                    ], 400);
+                }
+            }
+            $item->update($input);
+            return response()->json([
+                'status' => true,
+                'message' => 'Success',
+                'data' => $item
+            ], 200);
         } catch (Exception $e) {
             return response()->json([
                 'status' => false,
@@ -148,6 +149,27 @@ class ItemController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+
+            $item = Item::find($id);
+            if (!$item) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Item not found'
+                ], 400);
+            }
+
+            $item->delete();
+            return response()->json([
+                'status' => true,
+                'message' => 'Success',
+                'data' => $item
+            ], 200);
+        } catch (Exception $e) {
+            return response()->json([
+                'status' => false,
+                'message' => $e
+            ], 500);
+        }
     }
 }
