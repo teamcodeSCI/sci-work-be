@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th9 22, 2023 lúc 09:39 AM
+-- Thời gian đã tạo: Th9 26, 2023 lúc 05:51 AM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.0.28
 
@@ -41,10 +41,9 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `topic_id`, `user_id`, `name`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 'Tes', '2023-09-21 23:52:10', '2023-09-21 23:52:10'),
-(2, 1, 1, 'sad', '2023-09-21 23:52:12', '2023-09-21 23:52:12'),
-(3, 1, 1, 'Tesst', '2023-09-21 23:52:16', '2023-09-22 00:04:25'),
-(4, 1, 1, 'Text', '2023-09-22 00:05:53', '2023-09-22 00:05:53');
+(1, 1, 1, 'Test', '2023-09-25 00:26:32', '2023-09-25 00:26:32'),
+(2, 1, 1, 'Txe', '2023-09-25 00:26:35', '2023-09-25 00:26:35'),
+(3, 1, 1, 'đá', '2023-09-25 00:36:42', '2023-09-25 00:36:42');
 
 -- --------------------------------------------------------
 
@@ -73,7 +72,8 @@ CREATE TABLE `items` (
   `category_id` bigint(20) UNSIGNED NOT NULL,
   `user_id` bigint(20) UNSIGNED NOT NULL,
   `index` bigint(20) NOT NULL,
-  `content` longtext NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `content` longtext DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -82,15 +82,12 @@ CREATE TABLE `items` (
 -- Đang đổ dữ liệu cho bảng `items`
 --
 
-INSERT INTO `items` (`id`, `category_id`, `user_id`, `index`, `content`, `created_at`, `updated_at`) VALUES
-(1, 2, 1, 0, 'Test1', '2023-09-22 00:02:58', '2023-09-22 00:02:58'),
-(2, 2, 1, 2, 'Test1', '2023-09-22 00:03:01', '2023-09-22 00:39:15'),
-(3, 3, 1, 1, 'Test1', '2023-09-22 00:03:16', '2023-09-22 00:13:03'),
-(4, 4, 1, 1, 'Test1', '2023-09-22 00:03:17', '2023-09-22 00:05:56'),
-(5, 2, 1, 0, 'Test tes', '2023-09-22 00:06:04', '2023-09-22 00:34:54'),
-(6, 2, 1, 2, 'test sad', '2023-09-22 00:06:13', '2023-09-22 00:39:14'),
-(7, 2, 1, 2, 'test tesst', '2023-09-22 00:06:18', '2023-09-22 00:34:55'),
-(8, 4, 1, 1, 'test text', '2023-09-22 00:06:22', '2023-09-22 00:06:22');
+INSERT INTO `items` (`id`, `category_id`, `user_id`, `index`, `title`, `content`, `created_at`, `updated_at`) VALUES
+(1, 3, 1, 0, 'ádass', '<p>ádas</p>', '2023-09-25 00:27:33', '2023-09-25 20:25:53'),
+(3, 2, 1, 0, 'ádas', '<p><br></p>', '2023-09-25 00:28:36', '2023-09-25 20:26:59'),
+(5, 1, 1, 0, 'ádas', NULL, '2023-09-25 20:10:33', '2023-09-25 20:25:50'),
+(7, 3, 1, 0, 'zxcz', NULL, '2023-09-25 20:13:29', '2023-09-25 20:50:49'),
+(8, 3, 1, 0, 'ád', NULL, '2023-09-25 20:15:28', '2023-09-25 20:27:14');
 
 -- --------------------------------------------------------
 
@@ -109,20 +106,20 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(28, '2013_08_31_031848_create_positions_table', 1),
-(29, '2014_10_12_000000_create_users_table', 1),
-(30, '2014_10_12_100000_create_password_resets_table', 1),
-(31, '2016_06_01_000001_create_oauth_auth_codes_table', 1),
-(32, '2016_06_01_000002_create_oauth_access_tokens_table', 1),
-(33, '2016_06_01_000003_create_oauth_refresh_tokens_table', 1),
-(34, '2016_06_01_000004_create_oauth_clients_table', 1),
-(35, '2016_06_01_000005_create_oauth_personal_access_clients_table', 1),
-(36, '2019_08_19_000000_create_failed_jobs_table', 1),
-(37, '2019_12_14_000001_create_personal_access_tokens_table', 1),
-(38, '2023_08_31_031947_create_topics_table', 1),
-(39, '2023_08_31_031948_create_userlists_table', 1),
-(40, '2023_08_31_031959_create_categories_table', 1),
-(41, '2023_08_31_032009_create_items_table', 1);
+(56, '2013_08_31_031848_create_positions_table', 1),
+(57, '2014_10_12_000000_create_users_table', 1),
+(58, '2014_10_12_100000_create_password_resets_table', 1),
+(59, '2016_06_01_000001_create_oauth_auth_codes_table', 1),
+(60, '2016_06_01_000002_create_oauth_access_tokens_table', 1),
+(61, '2016_06_01_000003_create_oauth_refresh_tokens_table', 1),
+(62, '2016_06_01_000004_create_oauth_clients_table', 1),
+(63, '2016_06_01_000005_create_oauth_personal_access_clients_table', 1),
+(64, '2019_08_19_000000_create_failed_jobs_table', 1),
+(65, '2019_12_14_000001_create_personal_access_tokens_table', 1),
+(66, '2023_08_31_031947_create_topics_table', 1),
+(67, '2023_08_31_031948_create_userlists_table', 1),
+(68, '2023_08_31_031959_create_categories_table', 1),
+(69, '2023_08_31_032009_create_items_table', 1);
 
 -- --------------------------------------------------------
 
@@ -147,7 +144,9 @@ CREATE TABLE `oauth_access_tokens` (
 --
 
 INSERT INTO `oauth_access_tokens` (`id`, `user_id`, `client_id`, `name`, `scopes`, `revoked`, `created_at`, `updated_at`, `expires_at`) VALUES
-('18b47965cacecec4384cd5309c3ce7789f45aaba58227aa85f3f507707e45140c1350a57e2330af5', 1, 3, 'ducdm@scigroup.com.vn', '[]', 0, '2023-09-21 23:51:55', '2023-09-21 23:51:55', '2024-09-22 06:51:55');
+('12581a9eea747fd8617111fffbc9bdc68688236508620e91fb8f4f01d97f3b313ca250283a090e1c', 1, 1, 'ducdm@scigroup.com.vn', '[]', 0, '2023-09-25 00:26:25', '2023-09-25 00:26:25', '2024-09-25 07:26:25'),
+('52fca36504b4c65f5c75fff9befa64ac1514d20b9287a637e1e265ed856a7aca7440b8a793b0068a', 1, 1, 'ducdm@scigroup.com.vn', '[]', 0, '2023-09-25 18:47:58', '2023-09-25 18:47:58', '2024-09-26 01:47:58'),
+('64394bd3ea02b4582dc925368ceeb46dc3d41b55706d5b06375f38ec98da8d397ba2adf9ad27ceed', 1, 1, 'ducdm@scigroup.com.vn', '[]', 0, '2023-09-25 01:28:53', '2023-09-25 01:28:53', '2024-09-25 08:28:53');
 
 -- --------------------------------------------------------
 
@@ -189,10 +188,8 @@ CREATE TABLE `oauth_clients` (
 --
 
 INSERT INTO `oauth_clients` (`id`, `user_id`, `name`, `secret`, `provider`, `redirect`, `personal_access_client`, `password_client`, `revoked`, `created_at`, `updated_at`) VALUES
-(1, NULL, 'Laravel Personal Access Client', 'pEInPT4bTY7hz2gHDmt63vrRpVTjww6NRQIeld3f', NULL, 'http://localhost', 1, 0, 0, '2023-09-21 23:50:43', '2023-09-21 23:50:43'),
-(2, NULL, 'Laravel Password Grant Client', 'RDIkKFDNtW7jlAFwGQRYtyds03BIFSZ8RRSwJeRc', 'users', 'http://localhost', 0, 1, 0, '2023-09-21 23:50:43', '2023-09-21 23:50:43'),
-(3, NULL, 'Laravel Personal Access Client', 'O8Zz9ZtwgMbY9AheMQeTNmsWZXB0tYrwNQt8OFz4', NULL, 'http://localhost', 1, 0, 0, '2023-09-21 23:50:52', '2023-09-21 23:50:52'),
-(4, NULL, 'Laravel Password Grant Client', 'TiSo3a9PKf0vc1paGMrYoC9IfbLy7UIVrbUVsnP1', 'users', 'http://localhost', 0, 1, 0, '2023-09-21 23:50:52', '2023-09-21 23:50:52');
+(1, NULL, 'Laravel Personal Access Client', 'tRhRky9XuUMCiEDasf4rG3T4p4FviBCLoXSe2yGF', NULL, 'http://localhost', 1, 0, 0, '2023-09-25 00:23:28', '2023-09-25 00:23:28'),
+(2, NULL, 'Laravel Password Grant Client', 'RVCCdb8zbcm8SucW5rqe8kJGQWfeqXUMTxy8Xp3h', 'users', 'http://localhost', 0, 1, 0, '2023-09-25 00:23:28', '2023-09-25 00:23:28');
 
 -- --------------------------------------------------------
 
@@ -212,8 +209,7 @@ CREATE TABLE `oauth_personal_access_clients` (
 --
 
 INSERT INTO `oauth_personal_access_clients` (`id`, `client_id`, `created_at`, `updated_at`) VALUES
-(1, 1, '2023-09-21 23:50:43', '2023-09-21 23:50:43'),
-(2, 3, '2023-09-21 23:50:52', '2023-09-21 23:50:52');
+(1, 1, '2023-09-25 00:23:28', '2023-09-25 00:23:28');
 
 -- --------------------------------------------------------
 
@@ -278,7 +274,7 @@ CREATE TABLE `positions` (
 --
 
 INSERT INTO `positions` (`id`, `code`, `name`, `created_at`, `updated_at`) VALUES
-(1, 'CODE', 'Phát triển web', '2023-09-21 23:51:31', '2023-09-21 23:51:31');
+(1, 'CODE', 'Phát triển web', '2023-09-25 00:26:04', '2023-09-25 00:26:04');
 
 -- --------------------------------------------------------
 
@@ -299,8 +295,7 @@ CREATE TABLE `topics` (
 --
 
 INSERT INTO `topics` (`id`, `user_id`, `name`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Test', '2023-09-21 23:52:00', '2023-09-21 23:52:00'),
-(2, 1, 'Test 2', '2023-09-21 23:52:04', '2023-09-21 23:52:04');
+(1, 1, 'Test', '2023-09-25 00:26:28', '2023-09-25 00:26:28');
 
 -- --------------------------------------------------------
 
@@ -321,8 +316,7 @@ CREATE TABLE `userlists` (
 --
 
 INSERT INTO `userlists` (`id`, `user_id`, `topic_id`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, '2023-09-21 23:52:00', '2023-09-21 23:52:00'),
-(2, 1, 2, '2023-09-21 23:52:04', '2023-09-21 23:52:04');
+(1, 1, 1, '2023-09-25 00:26:28', '2023-09-25 00:26:28');
 
 -- --------------------------------------------------------
 
@@ -349,7 +343,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `first_name`, `last_name`, `background`, `email`, `position_id`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Đoàn Minh', 'Đức', '#ffa500', 'ducdm@scigroup.com.vn', 1, NULL, '$2y$10$8DfKDZS4trW5rOKnc39ZAu0WqaKQZoKgAL.npYvdcr5Ijet./ucAS', NULL, '2023-09-21 23:51:49', '2023-09-21 23:51:49');
+(1, 'Đoàn Minh', 'Đức', '#ffa500', 'ducdm@scigroup.com.vn', 1, NULL, '$2y$10$T9TdpYHSFPKDCpK/qEnTF./FlelSW5DCXD4YZisRbM4LTPphU411i', NULL, '2023-09-25 00:26:20', '2023-09-25 00:26:20');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -469,7 +463,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT cho bảng `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT cho bảng `failed_jobs`
@@ -487,19 +481,19 @@ ALTER TABLE `items`
 -- AUTO_INCREMENT cho bảng `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 
 --
 -- AUTO_INCREMENT cho bảng `oauth_clients`
 --
 ALTER TABLE `oauth_clients`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT cho bảng `oauth_personal_access_clients`
 --
 ALTER TABLE `oauth_personal_access_clients`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT cho bảng `personal_access_tokens`
@@ -517,13 +511,13 @@ ALTER TABLE `positions`
 -- AUTO_INCREMENT cho bảng `topics`
 --
 ALTER TABLE `topics`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT cho bảng `userlists`
 --
 ALTER TABLE `userlists`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT cho bảng `users`
