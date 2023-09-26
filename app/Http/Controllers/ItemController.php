@@ -61,7 +61,7 @@ class ItemController extends Controller
                 'category_id' => $category['id'],
                 'user_id' => $user['id'],
                 'index' => count($items),
-                'content' => $input['content']
+                'title' => $input['title']
             ]);
             return response()->json([
                 'status' => true,
@@ -109,14 +109,15 @@ class ItemController extends Controller
     {
         //
         try {
-            $input = $request->all();
-            $item = Item::find($id);
-            if (!$item) {
-                return response()->json([
-                    'status' => false,
-                    'message' => 'Item not found'
-                ], 400);
-            }
+        $input = $request->all();
+        $item = Item::find($id);
+        if (!$item) {
+            return response()->json([
+                'status' => false,
+                'message' => 'Item not found'
+            ], 400);
+        }
+        if (array_key_exists('category_id', $input)) {
             $category = Category::find($input['category_id']);
             if (!$category) {
                 return response()->json([
@@ -124,12 +125,13 @@ class ItemController extends Controller
                     'message' => 'Category not found'
                 ], 400);
             }
-            $item->update($input);
-            return response()->json([
-                'status' => true,
-                'message' => 'Success',
-                'data' => $item
-            ], 200);
+        }
+        $item->update($input);
+        return response()->json([
+            'status' => true,
+            'message' => 'Success',
+            'data' => $item
+        ], 200);
         } catch (Exception $e) {
             return response()->json([
                 'status' => false,
